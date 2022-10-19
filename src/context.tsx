@@ -43,10 +43,11 @@ const mainReducer = (
   shoppingCart: shoppingCartReducer(shoppingCart, action),
 });
 
-const AppProvider: React.FC<HTMLAttributes<HTMLDivElement>> = (props) => {
+const Provider: React.FC<HTMLAttributes<HTMLDivElement>> = (props) => {
   const [state, dispatch] = useReducer(mainReducer, initialState);
 
   return <AppContext.Provider value={{ state, dispatch }} {...props} />;
 };
+const AppProvider = React.memo(Provider);
 
 export { AppProvider, AppContext };
